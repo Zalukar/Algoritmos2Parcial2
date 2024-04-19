@@ -91,27 +91,35 @@ cabeza_lista = None
 
 # Bucle para permitir al usuario ingresar datos hasta que desee parar
 while True:
-    nombre = input("Ingrese el nombre del empleado (o 'stop' para detenerse): ")
-    if nombre.lower() == 'stop':
-        break
-    edad = int(input("Ingrese la edad del empleado: "))
-    tipo_empleado = input("Ingrese el tipo de empleado (1. Administrativo, 2. Ingeniero, 3. Tecnólogo): ")
-    sueldo = float(input("Ingrese el sueldo del empleado: "))
-    sexo = input("Ingrese el sexo del empleado (M/F): ")
+    try:
+        nombre = input("Ingrese el nombre del empleado (o 'stop' para detenerse): ")
+        if nombre.lower() == 'stop':
+            break
+        edad = int(input("Ingrese la edad del empleado: "))
+        tipo_empleado=str
+        while tipo_empleado not in ['administrativo','ingeniero','tecnologo']:       
+            tipo_empleado = input("Ingrese en letras y sin tildes el tipo de empleado (-Administrativo, -Ingeniero, -Tecnólogo): ").lower()
+        sueldo = float(input("Ingrese el sueldo del empleado: "))
+        sexo = str
+        while sexo not in ['m','f']:
+            sexo = input("Ingrese el sexo del empleado (M/F): ").lower() 
 
-    nuevo_empleado = Nodo(nombre, edad, tipo_empleado, sueldo, sexo)
+        nuevo_empleado = Nodo(nombre, edad, tipo_empleado, sueldo, sexo)
 
-    if cabeza_lista is None:
-        cabeza_lista = nuevo_empleado
-    else:
-        nodo_actual = cabeza_lista
-        while nodo_actual.siguiente:
-            nodo_actual = nodo_actual.siguiente
-        nodo_actual.siguiente = nuevo_empleado
+        if cabeza_lista is None:
+            cabeza_lista = nuevo_empleado
+        else:
+            nodo_actual = cabeza_lista
+            while nodo_actual.siguiente:
+                nodo_actual = nodo_actual.siguiente
+            nodo_actual.siguiente = nuevo_empleado
+    except ValueError:
+        print("Por favor, ingrese un número valido.")
 
 # Menú de opciones
 while True:
-    print(" ")
+    print(" ")#Da cumplimiento al 100% de los requerimientos solicitados de una forma clara y coherente. 
+#La argumentación de cada actividad es completa evidenciando la creatividad del estudiante.
     print("\nMENU:")
     print("1. Imprimir todos los datos de cada empleado.")
     print("2. Mostrar un empleado en particular.")
@@ -142,7 +150,7 @@ while True:
         print("Cantidad de empleados Ingenieros:", contar_empleados_por_tipo(cabeza_lista, "Ingeniero"))
         print(" ")
     elif opcion == 5:
-        print("Cantidad de empleados Tecnólogos:", contar_empleados_por_tipo(cabeza_lista, "Tecnólogo"))
+        print("Cantidad de empleados Tecnólogos:", contar_empleados_por_tipo(cabeza_lista, "Tecnologo"))
         print(" ")
     elif opcion == 6:
         print("Salario total de todos los empleados:", calcular_salario_total(cabeza_lista))
@@ -166,13 +174,15 @@ while True:
         print("Opción inválida. Por favor, intente nuevamente.")
         print(" ")
 
+        
 
-##crea una lista que contenga en Python
-##Nombre, Edad , Tipo_empleado , Sueldo, Sexo
-##Se debe llenar con valores dados por teclado hasta que el usuario no quiera introducir mas datos 
-##El tipo empleado es :
-##1. Administrativo
-##2. Ingeniero
+
+#crea una lista que contenga en Python
+#Nombre, Edad , Tipo_empleado , Sueldo, Sexo
+#Se debe llenar con valores dados por teclado hasta que el usuario no quiera introducir mas datos 
+#El tipo empleado es :
+#1. Administrativo
+#2. Ingeniero
 #3 Tecnólogo
 #luego de crear menú para imprimir imprimir
 #- Imprimir  todos los datos de cada empleado (recorrer la lista )
@@ -184,7 +194,9 @@ while True:
 #- Cuanto es el promedio del sueldo de Todos los Empleados 
 #- Cuantos Son mujeres 
 #- Cuantos son hombres
+
 #- imprimir el nombre de los empleados y el sueldo de los empleados con salario  superior a un valor dado por teclado.
-#Animo 
-#La tarea es  entrega grupal (mínimo 4 y máximo 5 estudiantes ) , se entrega un archivo Word, portada, pantallas de ejecución del programa, código fuente  , además el archivo tipo texto con el código , se entregan 2 archivos no pdf  , el codigo se entrega ademas en un archivo txt puro para compilar.
-#Da cumplimiento al 100% de los requerimientos solicitados de una forma clara y coherente. La argumentación de cada actividad es completa evidenciando la creatividad del estudiante.
+
+#se entrega un archivo Word, portada, pantallas de ejecución del programa, código fuente.
+#además el archivo tipo texto con el código , se entregan 2 archivos no pdf  , el codigo se entrega ademas en un archivo txt puro. 
+#para compilar.
